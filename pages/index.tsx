@@ -8,6 +8,7 @@ import { getConfig } from '@framework/api'
 import getAllProducts from '@framework/product/get-all-products'
 import getSiteInfo from '@framework/common/get-site-info'
 import getAllPages from '@framework/common/get-all-pages'
+import { EntityCard, EntityGrid } from '@components/entity'
 
 export async function getStaticProps({
   preview,
@@ -40,73 +41,73 @@ export default function Home({
   brands,
   categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const entities = [
+    {
+      name: 'Muslya Cafe',
+      backgroundColor: '#fff',
+      classList: null,
+      image: {
+        url: '/Mushlya_logo.png',
+      },
+    },
+    {
+      name: 'Білий Налив',
+      backgroundColor: '#06181a',
+      classList: 'grid-bg',
+      image: {
+        url: '/BNLogo.svg',
+      },
+    },
+  ]
   return (
     <>
-      <Grid>
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
+      <EntityGrid>
+        {entities.map((entity, i) => (
+          <EntityCard entity={entity} />
         ))}
-      </Grid>
-      <Marquee variant="secondary">
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            variant="slim"
-            imgProps={{
-              width: 320,
-              height: 320,
-            }}
-          />
-        ))}
-      </Marquee>
-      <Hero
-        headline="Release Details: The Yeezy BOOST 350 V2 ‘Natural'"
-        description="
-        The Yeezy BOOST 350 V2 lineup continues to grow. We recently had the
-        ‘Carbon’ iteration, and now release details have been locked in for
-        this ‘Natural’ joint. Revealed by Yeezy Mafia earlier this year, the
-        shoe was originally called ‘Abez’, which translated to ‘Tin’ in
-        Hebrew. It’s now undergone a name change, and will be referred to as
-        ‘Natural’."
-      />
-      <Grid layout="B">
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
-        ))}
-      </Grid>
-      <Marquee>
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            variant="slim"
-            imgProps={{
-              width: 320,
-              height: 320,
-            }}
-          />
-        ))}
-      </Marquee>
-      {/* <HomeAllProductsGrid
-        newestProducts={products}
-        categories={categories}
-        brands={brands}
-      /> */}
+      </EntityGrid>
+      {/*<Grid>*/}
+      {/*{products.slice(0, 3).map((product, i) => (*/}
+      {/*<ProductCard*/}
+      {/*key={product.id}*/}
+      {/*product={product}*/}
+      {/*imgProps={{*/}
+      {/*width: i === 0 ? 1080 : 540,*/}
+      {/*height: i === 0 ? 1080 : 540,*/}
+      {/*}}*/}
+      {/*/>*/}
+      {/*))}*/}
+      {/*</Grid>*/}
+      {/*<Marquee variant="secondary">*/}
+      {/*{products.slice(0, 3).map((product, i) => (*/}
+      {/*<ProductCard*/}
+      {/*key={product.id}*/}
+      {/*product={product}*/}
+      {/*variant="slim"*/}
+      {/*imgProps={{*/}
+      {/*width: 320,*/}
+      {/*height: 320,*/}
+      {/*}}*/}
+      {/*/>*/}
+      {/*))}*/}
+      {/*</Marquee>*/}
+      {/*<Hero*/}
+      {/*headline="Release Details: The Yeezy BOOST 350 V2 ‘Natural'"*/}
+      {/*description="Desc"*/}
+      {/*/>*/}
+      {/*<Marquee>*/}
+      {/*{products.slice(0, 3).map((product, i) => (*/}
+      {/*<ProductCard*/}
+      {/*key={product.id}*/}
+      {/*product={product}*/}
+      {/*variant="slim"*/}
+      {/*imgProps={{*/}
+      {/*width: 320,*/}
+      {/*height: 320,*/}
+      {/*}}*/}
+      {/*/>*/}
+      {/*))}*/}
+      {/*</Marquee>*/}
     </>
   )
 }

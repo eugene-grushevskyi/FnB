@@ -1,0 +1,5 @@
+.root {
+  width: 100%;
+  display: flex;
+  height: calc(100vh - 88px);
+}
